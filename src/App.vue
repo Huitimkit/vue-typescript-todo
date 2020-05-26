@@ -99,7 +99,7 @@ enum ETab {
   }
 })
 export default class App extends Vue {
-  todos: TodoItem[] =  []
+  todos: TodoItem[] = TodoStorage.fetch()
   newTodo: string = ''
   editedTodo: TodoItem | null = null
   visibility: ETab = ETab.all
