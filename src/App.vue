@@ -78,6 +78,12 @@ import TodoItem from '@/interface/TodoItem'
 import TodoStorage from '@/utils/TodoStorage'
 import Filters from '@/utils/Filters'
 
+enum ETab {
+  all = 'all',
+  active = 'active',
+  completed = 'completed'
+}
+
 @Component({
   filters: {
     pluralize(n: number) {
@@ -96,7 +102,7 @@ export default class App extends Vue {
   todos: TodoItem[] =  []
   newTodo: string = ''
   editedTodo: TodoItem | null = null
-  visibility: string = 'all'
+  visibility: ETab = ETab.all
   beforeEditCache: string = ''
 
   get filteredTodos() {
@@ -122,7 +128,7 @@ export default class App extends Vue {
     TodoStorage.save(todos);
   }
 
-  updateVisbility(payload: string) {
+  updateVisbility(payload: ETab) {
     this.visibility = payload
   }
 
